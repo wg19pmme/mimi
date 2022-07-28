@@ -1,6 +1,16 @@
-version: "3.9"  # optional since v1.27.0
+version: '2.13.6'
 services:
-  web:
-    build: .
+  ql:
+    image: whyour/qinglong:latest
+    container_name: ql
+    restart: always
+    volumes:
+       - /qinglong/ql/config:/ql/config
+       - /qinglong/ql/scripts:/ql/scripts
+       - /qinglong/ql/repo:/ql/repo
+       - /qinglong/ql/log:/ql/log
+       - /qinglong/ql/db:/ql/db
+       - /qinglong/ql/jbot:/ql/jbot
+       - /qinglong/ql/raw:/ql/raw
     ports:
-      - "80:80"
+       - 5700:5700

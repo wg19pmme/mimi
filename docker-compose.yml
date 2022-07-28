@@ -1,16 +1,15 @@
-version: '2.13.6'
 services:
-  ql:
-    image: whyour/qinglong:latest
-    container_name: ql
-    restart: always
-    volumes:
-       - /qinglong/ql/config:/ql/config
-       - /qinglong/ql/scripts:/ql/scripts
-       - /qinglong/ql/repo:/ql/repo
-       - /qinglong/ql/log:/ql/log
-       - /qinglong/ql/db:/ql/db
-       - /qinglong/ql/jbot:/ql/jbot
-       - /qinglong/ql/raw:/ql/raw
-    ports:
-       - 5700:5700
+    bit:
+        public: true
+        container_name: bitwarden
+        image: vaultwarden/server:alpine
+        ports:
+            - 80:80
+        volumes: 
+            - /data/
+        environment:
+            - WEBSOCKET_ENABLED=true
+            - SIGNUPS_ALLOWED=true
+            - WEB_VAULT_ENABLED=true
+            - ADMIN_TOKEN=ZPm6v3y3dgHaS192389%&*!
+
